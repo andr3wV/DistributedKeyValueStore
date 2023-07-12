@@ -1,4 +1,5 @@
-export function causalConsistent(metadata, senderPosition = undefined) {
+module.exports = {
+    causalConsistent : function (metadata, senderPosition = undefined) {
     let senderCheck = true;
     // console.log("Now using for causality" + metadata + " and " + vectorClock + " with " + senderPosition)
     for (let i = 0; i < metadata.length; i++) {
@@ -19,12 +20,12 @@ export function causalConsistent(metadata, senderPosition = undefined) {
     } else {
         return false; // Causal dependency not satisfied
     }
-}
+},
 
 
 
 
-export function maxVectorClock(v1, v2) {
+maxVectorClock:function(v1, v2) {
     if (v2 == 0) {
         return v1
     } else {
@@ -35,4 +36,5 @@ export function maxVectorClock(v1, v2) {
         return vectorResult
     }
 
+}
 }

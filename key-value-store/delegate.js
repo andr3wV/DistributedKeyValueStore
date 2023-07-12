@@ -1,4 +1,5 @@
-export async function delegatePut(dataBody, address, route) {
+module.exports = {
+    delegatePut : async function (dataBody, address, route) {
     // console.log("DELEGATING PUT WITH ")  
     // console.log("DATABODY " + dataBody)
     // console.log("ADDRESS " + address)
@@ -12,8 +13,9 @@ export async function delegatePut(dataBody, address, route) {
         }
     })
     return response
-}
-export async function delegateGet(dataBody, address, route, sender) {
+},
+
+delegateGet: async function (dataBody, address, route, sender) {
     const response = await axios.get("http://" + address + route, {
         "value": dataBody.value,
         "causal-metadata": dataBody['causal-metadata']
@@ -23,8 +25,9 @@ export async function delegateGet(dataBody, address, route, sender) {
         }
     })
     return response
-}
-export async function delegateDelete(dataBody, address, route, sender) {
+},
+
+delegateDelete : async function (dataBody, address, route, sender) {
     const response = await axios.delete("http://" + address + route, {
         "value": dataBody.value,
         "causal-metadata": dataBody['causal-metadata']
@@ -34,4 +37,5 @@ export async function delegateDelete(dataBody, address, route, sender) {
         }
     })
     return response
+}
 }

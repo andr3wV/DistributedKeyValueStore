@@ -1,4 +1,5 @@
-export async function broadcastViewDelete(viewIp, socketAddress, failures = undefined) {
+module.exports = {
+    broadcastViewDelete: async function(viewIp, socketAddress, failures = undefined) {
     // console.log(viewIp,socketAddress,failures)
     const errAddresses = [];
     const codes = [];
@@ -40,9 +41,9 @@ export async function broadcastViewDelete(viewIp, socketAddress, failures = unde
 
     await Promise.allSettled(promises);
     return [errAddresses, codes]; // Return the list of errored addresses and the status codes of the broadcast
-}
+},
 
-export async function broadcastViewPut(viewIp, socketAddress) {
+broadcastViewPut:async function(viewIp, socketAddress) {
     const errAddresses = [];
     const codes = [];
     const promises = [];
@@ -78,10 +79,10 @@ export async function broadcastViewPut(viewIp, socketAddress) {
     }
     await Promise.allSettled(promises)
     return [errAddresses, codes]; // Return the list of errored addresses and the status codes of the broadcast
-}
+},
 
 
-export async function broadcastkvsDelete(dataBody, route, view, metadata, sender, localShard) {
+broadcastkvsDelete:async function(dataBody, route, view, metadata, sender, localShard) {
     // console.log("Using this metadata in the broadcast delete: " + metadata)
     const errAddresses = [];
     const codes = [];
@@ -148,9 +149,9 @@ export async function broadcastkvsDelete(dataBody, route, view, metadata, sender
 
     await Promise.allSettled(promises);
     return [errAddresses, codes]
-}
+},
 
-export async function broadcastReplicate(dataBody, route, view, metadata, sender, localShard) {
+broadcastReplicate: async function(dataBody, route, view, metadata, sender, localShard) {
     // console.log("Entered the boradcast replication")
     // console.log(dataBody, route, view, metadata,sender,localShard)
     const errAddresses = [];
@@ -216,9 +217,9 @@ export async function broadcastReplicate(dataBody, route, view, metadata, sender
 
     await Promise.allSettled(promises);
     return [errAddresses, codes]
-}
+},
 
-export async function broadcastAddMember(ID, socketaddress) {
+broadcastAddMember: async function(ID, socketaddress) {
     let keys = Object.keys(view)
     // console.log("Attempting keys are " + keys)
     for (let i = 0; i < keys.length; i++) {
@@ -236,8 +237,8 @@ export async function broadcastAddMember(ID, socketaddress) {
             throw error
         }
     }
-}
-export async function getStoreLength(address, ID) {
+},
+getStoreLength: async function (address, ID) {
     try {
         const response = await axios.get("http://" + address + "/shard/key-count/" + ID);
         // console.log(response.data);
@@ -245,5 +246,6 @@ export async function getStoreLength(address, ID) {
     } catch (error) {
         throw error;
     }
+}
 }
 
