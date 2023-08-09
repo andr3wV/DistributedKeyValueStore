@@ -1,7 +1,7 @@
 
-# Distributed Key-Value Store API
+# Distributed Key-Value Store
 
-A robust back-end API designed for a distributed, replicated, fault-tolerant, causally consistent, and sharded key-value store.
+A robust back-end designed for a distributed, replicated, fault-tolerant, causally consistent, and sharded key-value store.
 
 ## Features 🌟
 - **Distributed & Sharded Architecture**: Efficiently spreads keys across multiple shards to ensure even distribution using a modular hash function.
